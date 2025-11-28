@@ -1,395 +1,88 @@
-# NewsHub - News/Media Front Page
+# LiveHindustan Clone - Next.js News Portal
 
-A modern, responsive news front page built with Next.js, inspired by LiveHindustan. Features real-time news fetching, dynamic routing, and SEO optimization.
+A simplified clone of the LiveHindustan website built with Next.js, featuring responsive design, dynamic routing, and real-time news integration.
 
-## 🚀 Features
+## Part A – Requirements
 
-- **Real-time News**: Fetches latest news using NewsAPI
-- **Responsive Design**: Mobile-first design with TailwindCSS
-- **Dynamic Routing**: Individual article pages with SEO-friendly URLs
-- **ISR (Incremental Static Regeneration)**: Optimized performance with Next.js
-- **SEO Optimized**: Meta tags, structured data, and Open Graph support
-- **Interactive UI**: Colorful, engaging user interface
-- **Error Handling**: Graceful fallbacks for API failures and missing data
+### Build a front-page clone (or a simplified version) of the LiveHindustan website
 
-## 🛠️ Tech Stack
+This project implements a simplified version of the LiveHindustan news portal with the following key features:
 
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: TailwindCSS 4
-- **API**: NewsAPI
-- **Language**: JavaScript
-- **Deployment**: Ready for Vercel/Netlify
+#### Layout & UI
+- **Header**: Navigation bar with logo, menu items, and search functionality
+- **Hero Section**: Featured article with breaking news marquee and weather widget
+- **News Grid**: Responsive grid layout for news articles with different sizes (large, medium, small)
+- **Category Sections**: Organized news by categories (Sports, Politics, Business, etc.)
+- **Footer**: Site information, quick links, categories, and contact details
+- **Article Detail Pages**: Individual article pages with full content
 
-## 📁 Project Structure
+#### Data Source
+- **Primary**: NewsAPI integration for real-time news data
+- **Fallback**: Comprehensive mock data for development and error scenarios
+- **Categories**: Support for multiple news categories with filtering
 
+#### Next.js Features
+- **Data Fetching**: Server-side rendering (SSR) for dynamic content with ISR for performance
+- **Dynamic Routing**: Article pages using `[id]` dynamic routes
+- **Image Optimization**: Next.js `<Image>` component with responsive sizing and lazy loading
+- **API Routes**: Custom API endpoints for news data with error handling
+
+#### Styling
+- **TailwindCSS**: Utility-first CSS framework for responsive design
+- **Custom Components**: Reusable UI components with consistent styling
+- **Responsive Design**: Mobile-first approach with breakpoints for desktop, tablet, and mobile
+
+#### SEO Considerations
+- **Metadata**: Dynamic title and description for home and article pages
+- **Structured Data**: Proper HTML semantics and meta tags
+- **Performance**: Optimized images and efficient data fetching
+
+## Part B – Explanation + Documentation
+
+### Design Document
+
+#### Wireframe / Layout Decisions
 ```
-news-front-page/
-├── src/
-│   ├── app/
-│   │   ├── article/[slug]/
-│   │   │   └── page.js          # Individual article pages
-│   │   ├── layout.js            # Root layout with metadata
-│   │   ├── page.js              # Home page
-│   │   └── globals.css          # Global styles
-│   ├── components/
-│   │   ├── Header.js            # Navigation header
-│   │   ├── Hero.js              # Featured article section
-│   │   ├── NewsCard.js          # Individual news card
-│   │   ├── NewsGrid.js          # News articles grid
-│   │   └── Footer.js            # Site footer
-│   └── utils/
-│       └── newsApi.js           # NewsAPI utility functions
-├── public/                      # Static assets
-├── package.json
-├── tailwind.config.js
-└── README.md
+┌─────────────────────────────────────────────────┐
+│ Header (Logo, Nav, Search)                      │
+├─────────────────────────────────────────────────┤
+│ Hero Section                                    │
+│ ┌─────────────────────────────────────────────┐ │
+│ │ Breaking News Marquee                      │ │
+│ ├─────────────────────────────────────────────┤ │
+│ │ Featured Article (2/3 width) │ Side News   │ │
+│ │ Large Image + Content       │ (1/3 width) │ │
+│ └─────────────────────────────┴─────────────┘ │
+├─────────────────────────────────────────────────┤
+│ Category Sections                              │
+│ ┌─────────────────────────────────────────────┐ │
+│ │ Category Header                            │ │
+│ │ ┌───┬───┬───┬───┐                         │ │
+│ │ │Card│Card│Card│Card│                       │ │
+│ │ └───┴───┴───┴───┘                         │ │
+│ └─────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────┤
+│ Footer (Links, Contact, Copyright)              │
+└─────────────────────────────────────────────────┘
 ```
 
-## 🚀 Getting Started
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd news-front-page
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Set up NewsAPI key**
-   - Get your free API key from [NewsAPI](https://newsapi.org/)
-   - Create a `.env.local` file in the root directory:
-   ```
-   NEWS_API_KEY=your_api_key_here
-   ```
-
-4. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Open [http://localhost:3000](http://localhost:3000) in your browser**
-
-## 📝 API Configuration
-
-The app uses NewsAPI for fetching news data. The API key should be stored in environment variables:
-
-- `NEWS_API_KEY`: Your NewsAPI key (required)
-
-If no API key is provided, the app will use a demo key with limited functionality.
-
-## 🎨 Components
-
-### Header
-- Responsive navigation with mobile menu
-- Gradient background with hover effects
-
-### Hero
-- Featured article display
-- Background image with overlay
-- Call-to-action button
-
-### NewsCard
-- Compact article preview
-- Image with fallback
-- Date and source information
-
-### NewsGrid
-- Responsive grid layout
-- Loading states and error handling
-- Pagination support
-
-### Footer
-- Social media links
-- Quick navigation
-- Copyright information
-
-## 🔧 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-### Code Style
-
-- Uses ESLint for code linting
-- Follows Next.js best practices
-- JavaScript with modern ES6+ features
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add your `NEWS_API_KEY` to environment variables
-4. Deploy!
-
-### Other Platforms
-
-The app can be deployed to any platform supporting Next.js:
-- Netlify
-- Railway
-- DigitalOcean App Platform
-
-## 📊 Performance
-
-- **ISR**: News data revalidates every 5 minutes
-- **Image Optimization**: Next.js Image component
-- **Code Splitting**: Automatic route-based splitting
-- **Responsive Images**: Optimized for all devices
-
-## 🔍 SEO Features
-
-- Dynamic meta tags for each page
-- Open Graph and Twitter Card support
-- Structured data (JSON-LD)
-- Semantic HTML
-- Fast loading times
-
-## 🐛 Error Handling
-
-- API failure fallbacks
-- Missing image placeholders
-- Network error states
-- 404 pages for invalid routes
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Acknowledgments
-
-- [NewsAPI](https://newsapi.org/) for providing news data
-- [Next.js](https://nextjs.org/) for the amazing framework
-- [TailwindCSS](https://tailwindcss.com/) for utility-first styling
-- Inspired by LiveHindustan design patterns
-
----
-
-Built with ❤️ using Next.js and TailwindCSS
-
-
-## Wireframe Layout
-
-1. Home Page Layout
-
-┌─────────────────────────────────────────────────────────────┐
-│ HEADER NAVIGATION                                           │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [NewsHub Logo]              [Home] [Business] [Tech]    │ │
-│ │                                 [Sports] [Health]       │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ HERO SECTION (Featured Article)                             │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ ┌─────────────────────────────────────────────────────┐ │ │
-│ │ │ [Large Hero Image]                                 │ │ │
-│ │ │                                                     │ │ │
-│ │ │ [Hero Title - Breaking News Headline]              │ │ │
-│ │ │ [Hero Description - Brief summary...]              │ │ │
-│ │ │ [Read More Button]                                  │ │ │
-│ │ └─────────────────────────────────────────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ NEWS GRID SECTION                                           │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [Latest News] [Filter: All | Today | This Week]        │ │
-│ │                                                         │ │
-│ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐         │ │
-│ │ │ [News Card] │ │ [News Card] │ │ [News Card] │         │ │
-│ │ │ [Image]     │ │ [Image]     │ │ [Image]     │         │ │
-│ │ │ [Title]     │ │ [Title]     │ │ [Title]     │         │ │
-│ │ │ [Summary]   │ │ [Summary]   │ │ [Summary]   │         │ │
-│ │ │ [Date]      │ │ [Date]      │ │ [Date]      │         │ │
-│ │ └─────────────┘ └─────────────┘ └─────────────┘         │ │
-│ │                                                         │ │
-│ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐         │ │
-│ │ │ [News Card] │ │ [News Card] │ │ [News Card] │         │ │
-│ │ └─────────────┘ └─────────────┘ └─────────────┘         │ │
-│ │                                                         │ │
-│ │ [Load More Button]                                      │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ FOOTER                                                     │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [NewsHub Logo]                                          │ │
-│ │                                                         │ │
-│ │ Quick Links: [Home] [About] [Contact] [Privacy]         │ │
-│ │                                                         │ │
-│ │ Categories: [Business] [Technology] [Sports] [Health]   │ │
-│ │                                                         │ │
-│ │ © 2024 NewsHub. All rights reserved.                    │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-2. Category Page Layout
-
-┌─────────────────────────────────────────────────────────────┐
-│ HEADER NAVIGATION (Same as Home)                           │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ CATEGORY HEADER                                             │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [Back to Home] ←                                         │ │
-│ │                                                         │ │
-│ │ [Category Icon] BUSINESS NEWS                            │ │
-│ │ Stay updated with the latest business news and          │ │
-│ │ developments                                             │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ NEWS GRID (Filtered by Category)                            │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [Business News] [Filter: All | Today | This Week]       │ │
-│ │                                                         │ │
-│ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐         │ │
-│ │ │ [News Card] │ │ [News Card] │ │ [News Card] │         │ │
-│ │ │ Business    │ │ Business    │ │ Business    │         │ │
-│ │ └─────────────┘ └─────────────┘ └─────────────┘         │ │
-│ │                                                         │ │
-│ │ [Load More Button]                                      │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ FOOTER (Same as Home)                                       │
-└─────────────────────────────────────────────────────────────┘
-
-3. Article Detail Page Layout
-
-┌─────────────────────────────────────────────────────────────┐
-│ HEADER NAVIGATION (Same as Home)                           │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ ARTICLE CONTENT                                             │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ [Back to News] ←                                         │ │
-│ │                                                         │ │
-│ │ ┌─────────────────────────────────────────────────────┐ │ │
-│ │ │ [Article Hero Image]                               │ │ │
-│ │ └─────────────────────────────────────────────────────┘ │ │
-│ │                                                         │ │
-│ │ [Source Badge] [Published Date]                         │ │
-│ │                                                         │ │
-│ │ [Article Title - H1]                                     │ │
-│ │ [Article Description/Summary]                           │ │
-│ │                                                         │ │
-│ │ [Article Body Content]                                   │ │
-│ │ Lorem ipsum dolor sit amet, consectetur adipiscing...   │ │
-│ │                                                         │ │
-│ │ [Blockquote/Highlight]                                   │ │
-│ │                                                         │ │
-│ │ [Share Buttons] [Bookmark]                               │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ RELATED ARTICLES                                            │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ Related Articles                                         │ │
-│ │                                                         │ │
-│ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐         │ │
-│ │ │ [Related]   │ │ [Related]   │ │ [Related]   │         │ │
-│ │ │ Article     │ │ Article     │ │ Article     │         │ │
-│ │ └─────────────┘ └─────────────┘ └─────────────┘         │ │
-│ └─────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ FOOTER (Same as Home)                                       │
-└─────────────────────────────────────────────────────────────┘
-
-4. Mobile Responsive Layout
-
-┌─────────────────┐
-│ [☰] NewsHub     │  ← Collapsed Header
-└─────────────────┘
-
-┌─────────────────┐
-│ [Hero Image]    │
-│ Breaking News   │
-│ Headline...     │
-│ [Read More]     │
-└─────────────────┘
-
-┌─────────────────┐
-│ [News Card]     │
-│ [Image]         │
-│ Title...        │
-│ Summary...      │
-│ [Date]          │
-└─────────────────┘
-
-┌─────────────────┐
-│ [News Card]     │
-│ [Image]         │
-│ Title...        │
-│ Summary...      │
-│ [Date]          │
-└─────────────────┘
-
-Component Breakdown
-Header Component:
-
-Logo/Brand
-Navigation Links (Home, Categories)
-Mobile Menu Toggle
-Hero Component:
-
-Large Featured Article
-Image, Title, Summary
-Call-to-Action Button
-NewsCard Component:
-
-Thumbnail Image
-Article Title
-Brief Description
-Publication Date
-Category Badge
-Clickable (links to article)
-NewsGrid Component:
-
-Filter Controls
-Responsive Grid Layout
-Loading States
-Error Handling
-Load More Functionality
-Footer Component:
-
-Brand Info
-Quick Links
-Category Links
-Copyright
-
-## Navigation Flow 
-
-Home Page (/)
-    ↓
-Category Pages (/category/business, /category/technology, etc.)
-    ↓
-Article Detail Pages (/article/[slug])
-    ↓
-Back to Home or Related Articles
+**Layout Decisions:**
+- **3-column grid** for main content: Featured article takes 2/3, side content 1/3
+- **4-column news grid** for category sections to maximize content visibility
+- **Mobile-first responsive** design with stacked layout on smaller screens
+- **Breaking news marquee** for immediate attention to urgent news
+- **Category-based organization** for better content discoverability
+
+#### Data-fetching Strategy
+**Chosen Method: Server-Side Rendering (SSR) with Incremental Static Regeneration (ISR)**
+
+```typescript
+// app/page.tsx - Home page with ISR
+export default async function Home() {
+  const newsData = await getNews(); // Server-side fetch
+  const featuredArticle = await getFeaturedArticle();
+  // ... render with fetched data
+}
+```
+
+**Why SSR + ISR:**
